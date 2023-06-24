@@ -27,6 +27,13 @@ git:
   ttl: 3600
   type: A
   value: 82.66.252.43
+grafana:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
 rss:
   octodns:
     cloudflare:

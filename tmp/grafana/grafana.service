@@ -1,0 +1,13 @@
+[Unit]
+Description=Grafana
+Requires=docker
+After=docker
+
+[Service]
+WorkingDirectory=/var/www/grafana.superkooka.com
+ExecStart=/usr/local/bin/docker-compose up
+ExecReload=/usr/local/bin/docker-compose restart --force-recreate
+ExecStop=/usr/local/bin/docker-compose stop
+
+[Install]
+WantedBy=multi-user.target
