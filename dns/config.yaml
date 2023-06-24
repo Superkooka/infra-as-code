@@ -1,0 +1,22 @@
+---
+manager:
+  include_meta: False
+  max_workers: 2
+
+providers:
+  zones:
+    class: octodns.provider.yaml.YamlProvider
+    directory: ./zones
+    default_ttl: 3600
+    enforce_order: True
+  cloudflare:
+    class: octodns_cloudflare.CloudflareProvider
+    email: env/CLOUDFLARE_EMAIL
+    token: env/CLOUDFLARE_TOKEN
+
+zones:
+  superkooka.com.:
+    sources:
+      - zones
+    targets:
+      - cloudflare
