@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  bind9:
+    ports:
+      - '53:53/udp'
+      - '53:53/tcp'
+      - '127.0.0.1:953:953/tcp'
+    container_name: bind9
+    volumes:
+      - ./named.conf.options:/etc/bind/named.conf
+      - ./cached:/var/cache/bind
+      - ./zones:/var/lib/bind
+    image: 'internetsystemsconsortium/bind9:9.18'

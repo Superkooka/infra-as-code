@@ -1,0 +1,8 @@
+---
+'':
+  - ttl: 3600
+    type: A
+    value: 192.168.0.7
+  - ttl: 3600
+    type: NS
+    value: ns1.superkooka.com.
