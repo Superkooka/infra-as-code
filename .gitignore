@@ -6,3 +6,6 @@
 
 dns/.env
 dns/env/
+
+ansible/.env
+ansible/env/

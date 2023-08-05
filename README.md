@@ -13,6 +13,19 @@ docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-b
 ## OctoDNS
 
 ```bash
+cd dns
+python3 -m venv env
+source env/bin/activate
 pip install octodns octodns-bind octodns-cloudflare
 octodns-sync --config-file=./config.yaml --doit
+```
+
+## Ansible
+
+```bash
+cd ansible
+python3 -m venv env
+source env/bin/activate
+pip install ansible ansible-lint
+ansible-playbook deploy 
 ```
