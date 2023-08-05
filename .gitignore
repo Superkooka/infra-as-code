@@ -1,4 +1,8 @@
-dns/.env
+# Packer
+.packer_cache
+.packer_plugins
 
-# Python venv
+# OctoDNS
+
+dns/.env
 dns/env/
