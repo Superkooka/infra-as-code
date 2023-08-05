@@ -9,3 +9,10 @@ docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-b
     -var "ssh-public-key=\"$(cat ~/.ssh/id_rsa.pub)\"" \
     packer/raspi
 ```
+
+## OctoDNS
+
+```bash
+pip install octodns octodns-bind octodns-cloudflare
+octodns-sync --config-file=./config.yaml --doit
+```
