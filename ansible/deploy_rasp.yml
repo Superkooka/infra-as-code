@@ -1,0 +1,23 @@
+---
+- name: Provision Rasp
+  hosts: rasp
+  become: true
+  roles:
+    - motd
+    - ufw
+    # - fail2ban
+    # - nginx
+    # - docker
+    # - docker-registry
+    # - bind9-docker
+    # - grafana-docker
+    # - prometheus-docker
+    # - gitea-docker
+    # - miniflux-docker
+  pre_tasks:
+    - name: Update and upgrade all packages
+      ansible.builtin.apt:
+        upgrade: true
+        update_cache: true
+        autoclean: true
+        autoremove: true

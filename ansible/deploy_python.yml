@@ -1,0 +1,8 @@
+---
+- name: Provision basic raspi debian image
+  hosts: rasp
+  become: true
+  gather_facts: no
+  tasks:
+    - name: Installer Python
+      raw: apt update && apt install -y python3

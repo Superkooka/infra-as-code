@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: ufw
+  author: Aymeric GUERACAGUE <aymeric.gueracague@gmail.com>
+  description: Configure ufw
+  license: AGPLv2
+  min_ansible_version: 8.0.0

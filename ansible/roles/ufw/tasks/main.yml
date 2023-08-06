@@ -1,0 +1,54 @@
+- name: Install ufw
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+
+- name: Allow incoming SSH
+  community.general.ufw:
+    direction: in
+    rule: allow
+    port: 22
+    proto: tcp
+
+- name: Allow outgoing HTTP(S)
+  community.general.ufw:
+    direction: out
+    rule: allow
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+  with_items:
+    - { port: 53, proto: tcp }  # DNS
+    - { port: 53, proto: udp }  # DNS
+    - { port: 80, proto: tcp }  # HTTP
+    - { port: 123, proto: udp } # NTP
+    - { port: 443, proto: tcp } # HTTPS
+    - { port: 443, proto: udp } # HTTPS
+    - { port: 853, proto: tcp } # DnsOverTLS
+
+- name: Deny incoming
+  community.general.ufw:
+    direction: incoming
+    policy: deny
+    log: true
+    logging: low
+
+- name: Deny forwarding
+  community.general.ufw:
+    direction: routed
+    policy: deny
+    route: true
+    log: true
+    logging: low
+
+- name: Deny outgoing
+  community.general.ufw:
+    direction: outgoing
+    policy: deny
+    log: true
+    logging: low
+
+- name: Enable ufw
+  community.general.ufw:
+    state: enabled
+  async: 60
+  poll: 10

@@ -1,0 +1,25 @@
+- name: Get all motd files
+  ansible.builtin.find:
+    path: /etc/update-motd.d
+    file_type: file
+    recurse: true
+  register: motds
+
+# https://doc.ubuntu-fr.org/motd#desactivation_d_un_script_deetcupdate-motdd
+- name: Disable of all motd files
+  ansible.builtin.file:
+    path: "{{ item.path }}"
+    mode: a-x
+  with_items: "{{ motds.files }}"
+
+- name: Delete default motd
+  ansible.builtin.file:
+    state: absent
+    path: /etc/motd
+
+- name: Create motd
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/update-motd.d/{{ item | basename }}"
+    mode: '0755'
+  with_fileglob: ./files/*
