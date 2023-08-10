@@ -10,7 +10,7 @@
     port: 22
     proto: tcp
 
-- name: Allow outgoing HTTP(S)
+- name: "Allow outgoing DNS"
   community.general.ufw:
     direction: out
     rule: allow
@@ -19,10 +19,7 @@
   with_items:
     - { port: 53, proto: tcp }  # DNS
     - { port: 53, proto: udp }  # DNS
-    - { port: 80, proto: tcp }  # HTTP
     - { port: 123, proto: udp } # NTP
-    - { port: 443, proto: tcp } # HTTPS
-    - { port: 443, proto: udp } # HTTPS
     - { port: 853, proto: tcp } # DnsOverTLS
 
 - name: Deny incoming
