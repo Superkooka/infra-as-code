@@ -27,5 +27,5 @@ cd ansible
 python3 -m venv env
 source env/bin/activate
 pip install ansible ansible-lint
-ansible-playbook deploy_rasp.yaml -i hosts 
+ansible-playbook deploy_rasp.yml --ask-become-pass
 ```
