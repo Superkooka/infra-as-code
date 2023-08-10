@@ -1,0 +1,9 @@
+{
+  admin off
+}
+
+{% for site in caddy_sites %}
+{{ site.domain }} {
+  reverse_proxy {{ site.proxy_pass }}
+}
+{% endfor %}

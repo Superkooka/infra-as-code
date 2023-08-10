@@ -6,9 +6,10 @@
     - motd
     - ufw
     # - fail2ban
-    # - nginx
+    - caddy
     # - docker
     # - docker-registry
+    # - postgres-docker
     # - bind9-docker
     # - grafana-docker
     # - prometheus-docker

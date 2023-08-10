@@ -1,0 +1,14 @@
+---
+
+caddy_sites: []
+  # - domain: rss.superkooka.com
+  #   proxy_pass: 127.0.0.1:1234
+
+  # - domain: 'rss.superkooka.com'
+  #   proxy_pass: "{{ miniflux.internal_url }}" 
+
+  # - domain: 'stats.superkooka.com'
+  #   proxy_pass: "{{ grafana.internal_url }}"
+
+  # - domain: 'media.superkooka.com'
+  #   proxy_pass: "{{ jellyfin.internal_url }}"
