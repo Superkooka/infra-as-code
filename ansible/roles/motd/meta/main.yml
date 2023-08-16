@@ -1,7 +1,0 @@
----
-galaxy_info:
-  role_name: motd
-  author: Aymeric GUERACAGUE <aymeric.gueracague@gmail.com>
-  description: Configure motd
-  license: AGPLv2
-  min_ansible_version: 8.0.0
