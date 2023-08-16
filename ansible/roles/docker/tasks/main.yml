@@ -28,3 +28,15 @@
       # - docker-compose-plugin
     state: present
     update_cache: yes
+
+- name: Install Docker SDK
+  ansible.builtin.pip:
+    name: docker
+    state: present
+    virtualenv: "{{ docker_venv }}"
+
+- name: Create a application network
+  community.docker.docker_network:
+    name: raspi
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"

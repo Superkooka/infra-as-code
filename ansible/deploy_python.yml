@@ -5,4 +5,4 @@
   gather_facts: no
   tasks:
     - name: Installer Python
-      raw: apt update && apt install -y python3
+      raw: apt update && apt install -y python3 python3-setuptools python3-wheel python3-virtualenv

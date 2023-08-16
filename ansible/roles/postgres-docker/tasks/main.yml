@@ -1,0 +1,22 @@
+- name: Create a Postgres volume
+  community.docker.docker_volume:
+    name: pg_data
+    state: present
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"
+
+- name: Create a Postgres container
+  community.docker.docker_container:
+    name: postgres
+    image: postgres
+    env:
+      POSTGRES_USER: "{{ postgres_default_user | string }}"
+      POSTGRES_PASSWORD: "{{ postgres_default_password | string }}"
+    networks:
+      - name: raspi
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    state: started
+    restart_policy: unless-stopped
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"

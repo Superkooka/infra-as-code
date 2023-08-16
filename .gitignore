@@ -9,3 +9,4 @@ dns/env/
 
 ansible/.env
 ansible/env/
+ansible/group_vars/**/secrets.yml
