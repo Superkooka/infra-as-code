@@ -3,10 +3,10 @@
   hosts: rasp
   become: true
   roles:
-    # - motd
-    # - ufw
-    # - fail2ban
-    # - caddy
+    - motd
+    - ufw
+    - fail2ban
+    - caddy
     - docker
     # - docker-registry
     - postgres-docker
