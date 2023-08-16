@@ -30,3 +30,7 @@ pip install ansible ansible-lint
 ansible-galaxy collection install -r requirements.yml
 ansible-playbook deploy_rasp.yml --ask-become-pass
 ```
+
+## Credit
+
+- Thanks to https://github.com/M0NsTeRRR/homelabv3-infra for inspiration
