@@ -7,7 +7,7 @@
     - ufw
     # - fail2ban
     - caddy
-    # - docker
+    - docker
     # - docker-registry
     # - postgres-docker
     # - bind9-docker
