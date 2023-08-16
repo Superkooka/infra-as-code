@@ -5,13 +5,13 @@
   roles:
     - motd
     - ufw
-    - fail2ban
+    # - fail2ban
     - caddy
     - docker
     # - docker-registry
     - postgres-docker
     # - bind9-docker
-    # - grafana-docker
+    - grafana-docker
     # - prometheus-docker
     # - gitea-docker
     # - miniflux-docker

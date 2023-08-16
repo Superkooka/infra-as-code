@@ -1,0 +1,23 @@
+- name: Create a Grafana volume
+  community.docker.docker_volume:
+    name: grafana-storage
+    state: present
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"
+
+- name: Create a Grafana container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana:10.0.3
+    env:
+      GF_SERVER_ROOT_URL: "https://{{ grafana.external_url }}" 
+    networks:
+      - name: raspi
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    ports:
+     - "{{ grafana.internal_port }}:3000"
+    state: started
+    restart_policy: unless-stopped
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"

@@ -4,6 +4,8 @@
 
 {% for site in caddy_sites %}
 {{ site.domain }} {
+  tls {{ caddy_lets_encrypt_email }}
+
   reverse_proxy {{ site.proxy_pass }}
 }
 {% endfor %}

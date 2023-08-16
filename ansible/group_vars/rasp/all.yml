@@ -1,14 +1,20 @@
 ---
 
-caddy_sites: []
+grafana:
+  external_url: stats.superkooka.com
+  internal_url: 127.0.0.1
+  internal_port: 3000
+
+caddy_lets_encrypt_email: aymeric.gueracague@gmail.com
+caddy_sites:
   # - domain: rss.superkooka.com
   #   proxy_pass: 127.0.0.1:1234
 
   # - domain: 'rss.superkooka.com'
   #   proxy_pass: "{{ miniflux.internal_url }}" 
 
-  # - domain: 'stats.superkooka.com'
-  #   proxy_pass: "{{ grafana.internal_url }}"
+  - domain: "{{ grafana.external_url }}"
+    proxy_pass: "http://{{ grafana.internal_url }}:{{ grafana.internal_port }}"
 
   # - domain: 'media.superkooka.com'
   #   proxy_pass: "{{ jellyfin.internal_url }}"
