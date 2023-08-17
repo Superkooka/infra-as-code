@@ -1,3 +1,9 @@
+- name: Install psycopg2
+  ansible.builtin.pip:
+    name: psycopg2-binary
+    state: present
+    virtualenv: "{{ postgres_venv }}"
+
 - name: Create a Postgres volume
   community.docker.docker_volume:
     name: pg_data
@@ -10,13 +16,40 @@
     name: postgres
     image: postgres
     env:
-      POSTGRES_USER: "{{ postgres_default_user | string }}"
-      POSTGRES_PASSWORD: "{{ postgres_default_password | string }}"
+      POSTGRES_USER: "{{ postgres_default_user }}"
+      POSTGRES_PASSWORD: "{{ postgres_default_password }}"
     networks:
       - name: raspi
     volumes:
       - pgdata:/var/lib/postgresql/data
+    ports:
+     - 5432:5432 # TODO: remove this permanent port-forward to temporary
     state: started
     restart_policy: unless-stopped
   vars:
     ansible_python_interpreter: "{{ docker_venv }}/bin/python"
+
+- name: Create Postgres users
+  community.postgresql.postgresql_user:
+    login_host: localhost
+    login_user: "{{ postgres_default_user }}"
+    login_password : "{{ postgres_default_password }}"
+
+    name: "{{ item.value.username }}"
+    password: "{{ item.value.password }}"
+  with_dict: "{{ postgres_databases }}"
+  vars:
+    ansible_python_interpreter: "{{ postgres_venv }}/bin/python"
+
+- name: Create Postgres databases
+  community.postgresql.postgresql_db:
+    login_host: localhost
+    login_user: "{{ postgres_default_user }}"
+    login_password : "{{ postgres_default_password }}"
+
+    name: "{{ item.value.database }}"
+    owner: "{{ item.value.username }}"
+    encoding: UTF-8
+  with_dict: "{{ postgres_databases }}"
+  vars:
+    ansible_python_interpreter: "{{ postgres_venv }}/bin/python"

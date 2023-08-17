@@ -10,7 +10,13 @@
     name: grafana
     image: grafana/grafana:10.0.3
     env:
-      GF_SERVER_ROOT_URL: "https://{{ grafana.external_url }}" 
+      GF_SERVER_ROOT_URL: "https://{{ grafana.external_url }}"
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_HOST: postgres
+      GF_DATABASE_NAME: "{{ postgres_databases.grafana.database }}"
+      GF_DATABASE_USER: "{{ postgres_databases.grafana.username }}"
+      GF_DATABASE_PASSWORD: "{{ postgres_databases.grafana.password }}"
+      GF_USERS_DEFAULT_THEME: light
     networks:
       - name: raspi
     volumes:
