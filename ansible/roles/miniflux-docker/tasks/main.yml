@@ -1,0 +1,18 @@
+- name: Create miniflux container
+  community.docker.docker_container:
+    name: miniflux
+    image: miniflux/miniflux:2.0.46
+    env:
+      DATABASE_URL: "postgres://{{ postgres_databases.miniflux.username }}:{{ postgres_databases.miniflux.password }}@postgres/{{ postgres_databases.miniflux.database }}?sslmode=disable"
+      RUN_MIGRATIONS: "1"
+      CREATE_ADMIN: "1"
+      ADMIN_USERNAME: "{{ miniflux_admin_username }}"
+      ADMIN_PASSWORD: "{{ miniflux_admin_password }}"
+    networks:
+      - name: raspi
+    ports:
+     - "{{ miniflux_host_port }}:8080"
+    state: started
+    restart_policy: unless-stopped
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"

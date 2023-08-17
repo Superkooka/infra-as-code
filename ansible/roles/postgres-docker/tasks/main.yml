@@ -31,9 +31,10 @@
 
 - name: Create Postgres users
   community.postgresql.postgresql_user:
-    login_host: localhost
+    login_host: 127.0.0.1
     login_user: "{{ postgres_default_user }}"
     login_password : "{{ postgres_default_password }}"
+    state: present 
 
     name: "{{ item.value.username }}"
     password: "{{ item.value.password }}"
@@ -43,9 +44,10 @@
 
 - name: Create Postgres databases
   community.postgresql.postgresql_db:
-    login_host: localhost
+    login_host: 127.0.0.1
     login_user: "{{ postgres_default_user }}"
     login_password : "{{ postgres_default_password }}"
+    state: present 
 
     name: "{{ item.value.database }}"
     owner: "{{ item.value.username }}"

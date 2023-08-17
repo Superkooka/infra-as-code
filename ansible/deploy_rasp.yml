@@ -14,7 +14,7 @@
     - grafana-docker
     # - prometheus-docker
     # - gitea-docker
-    # - miniflux-docker
+    - miniflux-docker
   pre_tasks:
     - name: Update and upgrade all packages
       ansible.builtin.apt:
