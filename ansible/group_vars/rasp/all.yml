@@ -9,6 +9,9 @@ miniflux_external_url: rss.superkooka.com
 miniflux_host_url: 127.0.0.1
 miniflux_host_port: 3001
 
+quiz_external_url: quiz.superkooka.com
+quiz_host_port: 3002
+
 caddy_lets_encrypt_email: aymeric.gueracague@gmail.com
 caddy_sites:
   - domain: "{{ miniflux_external_url }}"
@@ -16,3 +19,6 @@ caddy_sites:
 
   - domain: "{{ grafana_external_url }}"
     proxy_pass: "http://{{ grafana_host_url }}:{{ grafana_host_port }}"
+
+  - domain: "{{ quiz_external_url }}"
+    proxy_pass: "http://127.0.0.1:{{ quiz_host_port }}"

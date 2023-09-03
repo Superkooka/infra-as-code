@@ -41,6 +41,13 @@ ns1:
   ttl: 3600
   type: A
   value: 82.66.252.43
+quiz:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
 rss:
   octodns:
     cloudflare:

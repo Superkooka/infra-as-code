@@ -1,0 +1,12 @@
+- name: Create quiz container
+  community.docker.docker_container:
+    name: quiz
+    image: superkooka/quiz:latest
+    networks:
+      - name: raspi
+    ports:
+     - "{{ quiz_host_port }}:8080"
+    state: started
+    restart_policy: unless-stopped
+  vars:
+    ansible_python_interpreter: "{{ docker_venv }}/bin/python"
