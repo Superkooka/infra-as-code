@@ -6,34 +6,7 @@
     flags: 0
     tag: issue
     value: letsencrypt.org
-calendar:
-  octodns:
-    cloudflare:
-      proxied: false
-  ttl: 3600
-  type: A
-  value: 82.66.252.43
-docker-registry:
-  octodns:
-    cloudflare:
-      proxied: false
-  ttl: 3600
-  type: A
-  value: 82.66.252.43
-drone:
-  octodns:
-    cloudflare:
-      proxied: false
-  ttl: 3600
-  type: A
-  value: 82.66.252.43
-git:
-  octodns:
-    cloudflare:
-      proxied: false
-  ttl: 3600
-  type: A
-  value: 82.66.252.43
+
 ns1:
   octodns:
     cloudflare:
@@ -41,13 +14,15 @@ ns1:
   ttl: 3600
   type: A
   value: 82.66.252.43
-quiz:
+
+pterodactyl:
   octodns:
     cloudflare:
       proxied: false
   ttl: 3600
   type: A
   value: 82.66.252.43
+
 rss:
   octodns:
     cloudflare:
@@ -55,7 +30,16 @@ rss:
   ttl: 3600
   type: A
   value: 82.66.252.43
-stats:
+
+universia:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
+
+wings:
   octodns:
     cloudflare:
       proxied: false
