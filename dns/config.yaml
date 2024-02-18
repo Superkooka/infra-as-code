@@ -13,12 +13,12 @@ providers:
     class: octodns_cloudflare.CloudflareProvider
     email: env/CLOUDFLARE_EMAIL
     token: env/CLOUDFLARE_TOKEN
-  bind9:
-      class: octodns_bind.Rfc2136Provider
-      host: ns1.superkooka.com
-      key_name: env/AXFR_KEY_NAME
-      key_secret: env/AXFR_KEY_SECRET
-      key_algorithm: hmac-sha256
+  # bind9:
+  #     class: octodns_bind.Rfc2136Provider
+  #     host: ns1.superkooka.com
+  #     key_name: env/AXFR_KEY_NAME
+  #     key_secret: env/AXFR_KEY_SECRET
+  #     key_algorithm: hmac-sha256
 
 zones:
   superkooka.com.:
@@ -26,8 +26,8 @@ zones:
       - zones
     targets:
       - cloudflare
-  superkooka.home.:
-    sources:
-      - zones
-    targets:
-      - bind9
+  # superkooka.home.:
+  #   sources:
+  #     - zones
+  #   targets:
+  #     - bind9
