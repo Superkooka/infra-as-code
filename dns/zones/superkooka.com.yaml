@@ -7,6 +7,14 @@
     tag: issue
     value: letsencrypt.org
 
+gitea:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
+
 ns1:
   octodns:
     cloudflare:
