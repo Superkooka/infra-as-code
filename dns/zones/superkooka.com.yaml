@@ -1,11 +1,41 @@
 ---
-'':
+? ''
+: - ttl: 300
+    type: CAA
+    value:
+      flags: 0
+      tag: issue
+      value: letsencrypt.org
+  - ttl: 300
+    type: TXT
+    values: 
+      - protonmail-verification=a170a22fcd992306ff222e708ba1cd6d91731a2c
+      - v=spf1 include:_spf.protonmail.ch ~all
+  - ttl: 300
+    type: MX
+    values:
+    - exchange: mail.protonmail.ch.
+      preference: 10
+    - exchange: mailsec.protonmail.ch.
+      preference: 20
+
+_discord:
   ttl: 300
-  type: CAA
-  value:
-    flags: 0
-    tag: issue
-    value: letsencrypt.org
+  type: TXT
+  value: dh=15cad1fe23336761aed203018a5902e45e36cecb
+
+_dmarc:
+  ttl: 300
+  type: TXT
+  value: v=DMARC1\; p=quarantine\; adkim=s\; aspf=s\; rua=mailto:dmarc@superkooka.com\;
+
+film:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
 
 gitea:
   octodns:
@@ -22,6 +52,30 @@ ns1:
   ttl: 3600
   type: A
   value: 82.66.252.43
+
+protonmail2._domainkey:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: CNAME
+  value: protonmail2.domainkey.dxfjye7qfd4lw6cuqtvefxsdfd24js6oqq7z4jaiw4v3v6ynoq74q.domains.proton.ch.
+
+protonmail3._domainkey:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: CNAME
+  value: protonmail3.domainkey.dxfjye7qfd4lw6cuqtvefxsdfd24js6oqq7z4jaiw4v3v6ynoq74q.domains.proton.ch.
+
+protonmail._domainkey:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 300
+  type: CNAME
+  value: protonmail.domainkey.dxfjye7qfd4lw6cuqtvefxsdfd24js6oqq7z4jaiw4v3v6ynoq74q.domains.proton.ch.
 
 pterodactyl:
   octodns:
