@@ -29,6 +29,15 @@ _dmarc:
   type: TXT
   value: v=DMARC1\; p=quarantine\; adkim=s\; aspf=s\; rua=mailto:dmarc@superkooka.com\;
 
+_minecraft._tcp:
+  ttl: 300
+  type: SRV
+  value:
+    port: 25567
+    priority: 0
+    target: minecraft-series.superkooka.com.
+    weight: 5
+
 film:
   octodns:
     cloudflare:
@@ -38,6 +47,14 @@ film:
   value: 82.66.252.43
 
 gitea:
+  octodns:
+    cloudflare:
+      proxied: false
+  ttl: 3600
+  type: A
+  value: 82.66.252.43
+
+minecraft-series:
   octodns:
     cloudflare:
       proxied: false
